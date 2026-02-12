@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Kenangan Cinta</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f5e6e8, #ffe4e1);
+            color: #8b4513; /* Merah marun */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background: rgba(255, 228, 225, 0.8); /* Pink pastel */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .surprise {
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .btn {
+            background: #8b4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #a0522d;
+        }
+        .hidden-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.5;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Halaman Pembuka -->
+        <section class="section visible">
+            <h1 style="text-align: center; color: #8b4513;">Ada Sesuatu yang Ingin Aku Berikan...</h1>
+            <p style="text-align: center;">Klik tombol di bawah untuk masuk ke dunia kecil kita. Siap untuk kejutan?</p>
+            <button class="btn" onclick="scrollToNext()">Masuk</button>
+        </section>
+
+        <!-- Section Cerita -->
+        <section class="section" id="story">
+            <h2>Perjalanan Cinta Kita</h2>
+            <div class="card">
+                <p>Ingat hari pertama kita bertemu? Kamu pesan kopi pahit, aku latte manis – seperti kita sekarang. Dan aku yang selalu lupa anniversary, tapi kamu yang selalu ingat. Haha, aku beruntung banget punya kamu.</p>
+            </div>
+            <!-- Tambah kartu lain -->
+        </section>
+
+        <!-- Section Momen -->
+        <section class="section" id="moments">
+            <h2>Momen-Momen Bermakna</h2>
+            <div class="card">
+                <p>Momen nonton film sambil makan popcorn, atau jalan-jalan hujan tanpa payung. Itu yang bikin hidupku lebih berwarna.</p>
+                <!-- Ganti dengan <img src="your-photo.jpg" alt="Momen"> -->
+            </div>
+        </section>
+
+        <!-- Section Hal Disukai -->
+        <section class="section" id="likes">
+            <h2>Hal-Hal yang Aku Sukai dari Kamu</h2>
+            <div class="card">
+                <p>Aku suka cara kamu tertawa keras saat lelucon bodohku, atau bagaimana kamu selalu tahu kapan aku butuh pelukan. Kamu bikin hari-hariku lebih hangat.</p>
+            </div>
+        </section>
+
+        <!-- Surprise Section -->
+        <section class="surprise" id="surprise">
+            <h2>Kejutan Khusus</h2>
+            <p>Terima kasih telah menjadi cahaya di hari-hariku. Aku harap kita terus bersama, melewati segala rintangan. Ingat liburan pertama kita? Aku ingin ulangi itu setiap tahun. Aku cinta kamu, lebih dari kata-kata.</p>
+        </section>
+    </div>
+
+    <!-- Tombol Rahasia -->
+    <button class="btn hidden-btn" onclick="showSurprise()">❤️</button>
+
+    <script>
+        // Animasi scroll
+        ScrollReveal().reveal('.section', { delay: 200, distance: '50px', origin: 'bottom' });
+
+        function scrollToNext() {
+            document.getElementById('story').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showSurprise() {
+            document.getElementById('surprise').style.display = 'block';
+            // Tambah animasi confetti jika mau
+        }
+
+        // Auto-reveal on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
